@@ -1,0 +1,27 @@
+<div class="container-days-of-week">
+  <div class="headerDayOfWeek" *ngFor="let dayOfWeek of DAYS_OF_WEEK">
+    {{ dayOfWeek }}
+  </div>
+</div>
+
+<div class="week" *ngFor="let week of weeks; let index = index">
+  <!-- <span class="label-week">
+    W {{ index + 1 }}
+  </span>   -->
+  <div
+    class="dayOfWeek"
+    [ngClass]="{
+      otherMonth: getMonth(day) !== getMonth(baseDate),
+      'selected-day':
+        day.toLocaleDateString() === selectedDay.toLocaleDateString()
+    }"
+    [title]="isToday(day) ? 'Today' : ''"
+    *ngFor="let day of week"
+    (click)="selectDay(day)"
+    (dblclick)="dblclickDay(day)"
+  >
+    <span [ngClass]="{ today: isToday(day) }">
+      {{ day | date: "dd" }}
+    </span>
+  </div>
+</div>

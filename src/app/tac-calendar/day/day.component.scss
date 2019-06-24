@@ -1,0 +1,25 @@
+.header {
+  padding: 8px;
+  background-color: #f1f1f1;
+  text-transform: capitalize;
+  text-align: center;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 70px;
+}
+
+.today {
+  background-color: #0000ffa8;
+  color: #fff;
+}
+
+.hour {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.hour:hover {
+  background-color: #f8f8f8;
+}

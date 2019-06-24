@@ -1,0 +1,63 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 16px;
+
+  .title-month {
+    text-transform: capitalize;
+    display: flex;
+    justify-content: center;
+    padding: 4px;
+  }
+
+  .container-header-day-of-week {
+    display: flex;
+    align-items: center;
+    height: 24px;
+
+    .header-day-of-week {
+      display: flex;
+      justify-content: center;
+      flex: 1;
+      font-size: 12px;
+      color: #70757a;
+    }
+  }
+
+  .week {
+    display: flex;
+    align-items: center;
+    height: 28px;
+
+    .dayOfWeek {
+      display: flex;
+      flex: 1;
+      justify-content: center;
+
+      .label-day {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        font-size: 12px;
+        color: #3c4043;
+        cursor: pointer;
+      }
+
+      .otherMonth {
+        color: #70757a !important;
+      }
+
+      .label-day:not(.today):hover {
+        background-color: #f1f1f1;
+      }
+
+      .today {
+        background-color: #0000ffa8;
+        color: #fff;
+      }
+    }
+  }
+}

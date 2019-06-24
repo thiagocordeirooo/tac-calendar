@@ -1,0 +1,29 @@
+<div class="container">
+  <span *ngIf="showLabelMonth" class="title-month">
+    {{ month | date: "MMMM 'de' yyyy" }}
+  </span>
+  <div class="container-header-day-of-week">
+    <div class="header-day-of-week" *ngFor="let dayOfWeek of DAYS_OF_WEEK">
+      {{ dayOfWeek }}
+    </div>
+  </div>
+
+  <div class="week" *ngFor="let week of weeks; let index = index">
+    <div
+      class="dayOfWeek"
+      [title]="isToday(day) ? 'Today' : ''"
+      *ngFor="let day of week"
+    >
+      <span
+        [ngClass]="{
+          today: isToday(day),
+          otherMonth: getMonth(day) !== getMonth(month)
+        }"
+        class="label-day"
+        (click)="onClickDay.emit(day)"
+      >
+        {{ day | date: "dd" }}
+      </span>
+    </div>
+  </div>
+</div>

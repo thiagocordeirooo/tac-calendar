@@ -1,0 +1,37 @@
+.header-day-of-week {
+  flex: 1;
+  text-transform: capitalize;
+  background-color: #f1f1f1;
+  padding: 8px;
+  border: 2px solid #fff;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 70px;
+}
+
+.today {
+  background-color: #0000ffa8;
+  color: #fff;
+}
+
+.hour {
+  display: flex;
+  flex-direction: column;
+  height: 40px;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.label-hour {
+  display: flex;
+  align-items: center;
+  height: 41px;
+  margin: 0 8px;
+}
+
+.hour:hover {
+  background-color: #f8f8f8;
+}
+
+.selected-hour {
+  border: 1px solid blue;
+}

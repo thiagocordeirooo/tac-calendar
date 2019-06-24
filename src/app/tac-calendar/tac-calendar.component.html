@@ -1,0 +1,143 @@
+<header>
+  <div class="container-period">
+    <button class="btn btn-prev" (click)="prev()">PREV</button>
+
+    <h2 class="display-period">
+      {{ displayPeriod }}
+    </h2>
+
+    <button class="btn btn-next" (click)="next()">NEXT</button>
+
+    <button class="btn" style="margin-left: 16px;" (click)="today()">
+      TODAY
+    </button>
+  </div>
+
+  <div class="btn-group btn-group-period">
+    <button
+      class="btn"
+      [ngClass]="{ 'btn-checked': viewType === 'year' }"
+      (click)="viewType = 'year'"
+      title="Shift + Y"
+    >
+      Year
+    </button>
+    <button
+      class="btn"
+      [ngClass]="{ 'btn-checked': viewType === 'month' }"
+      (click)="viewType = 'month'"
+      title="Shift + M"
+    >
+      Month
+    </button>
+    <button
+      class="btn"
+      [ngClass]="{ 'btn-checked': viewType === 'week' }"
+      (click)="viewType = 'week'"
+      title="Shift + W"
+    >
+      Week
+    </button>
+    <button
+      class="btn"
+      [ngClass]="{ 'btn-checked': viewType === 'day' }"
+      (click)="viewType = 'day'"
+      title="Shift + D"
+    >
+      Day
+    </button>
+  </div>
+</header>
+
+<div style="display: flex">
+  <div class="container-left">
+    <div style="margin-top: auto;margin-left: -32px;">
+      <div style="display: flex;margin: 0 8px -8px 8px;">
+        <button
+          (click)="prevMiniMonth()"
+          class="btn"
+          style="margin-right: auto;padding: 8px 16px;"
+        >
+          <
+        </button>
+
+        {{ baseDateMiniMonth | date: "MMMM 'de' yyyy" }}
+
+        <button
+          (click)="nextMiniMonth()"
+          class="btn"
+          style="margin-left: auto;padding: 8px 16px;"
+        >
+          >
+        </button>
+      </div>
+
+      <app-mini-month
+        [showLabelMonth]="false"
+        [month]="baseDateMiniMonth"
+        (onClickDay)="onClickDay($event)"
+      ></app-mini-month>
+    </div>
+  </div>
+
+  <div class="container-right">
+    <div class="container-fields" *ngIf="['day', 'week'].includes(viewType)">
+      <div class="field">
+        Horário Inicial
+        <input
+          type="number"
+          placeholder="Horário Inicial"
+          [(ngModel)]="optionsSchedule.startInterval"
+        />
+      </div>
+
+      <div class="field">
+        Horário Final
+        <input
+          type="number"
+          placeholder="Horário Final"
+          [(ngModel)]="optionsSchedule.endInterval"
+        />
+      </div>
+
+      <div class="field">
+        Intervalo
+        <input
+          type="number"
+          placeholder="Intervalo"
+          [(ngModel)]="optionsSchedule.interval"
+        />
+      </div>
+
+      <button (click)="updateOptionsSchedule()">Update</button>
+    </div>
+
+    <div [ngSwitch]="viewType">
+      <app-year
+        *ngSwitchCase="'year'"
+        [baseDate]="baseDate"
+        (onClickDay)="onClickDay($event)"
+      ></app-year>
+
+      <app-month
+        *ngSwitchCase="'month'"
+        [baseDate]="baseDate"
+        (prev)="prev()"
+        (next)="next()"
+        (onClickDay)="onClickDay($event)"
+      ></app-month>
+
+      <app-week
+        *ngSwitchCase="'week'"
+        [baseDate]="baseDate"
+        [optionsSchedule]="optionsSchedule"
+      ></app-week>
+
+      <app-day
+        *ngSwitchDefault
+        [baseDate]="baseDate"
+        [optionsSchedule]="optionsSchedule"
+      ></app-day>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<div class="header" [ngClass]="{ today: isToday(baseDate) }">
+  {{ baseDate | date: "EEEE, dd 'de' MMM 'de' yyyy" }}
+</div>
+
+<div class="hour" *ngFor="let hourOfDay of hoursOfDay">
+  {{ hourOfDay | date: "HH:mm" }}
+</div>

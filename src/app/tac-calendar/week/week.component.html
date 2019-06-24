@@ -1,0 +1,25 @@
+<div style="display: flex; margin-bottom: 32px;">
+  <div style="display: flex; flex-direction: column;margin-top: 42px;">
+    <div class="label-hour" *ngFor="let hour of daysOfweek[0].hours">
+      {{ hour | date: "HH:mm" }}
+    </div>
+  </div>
+
+  <div style="flex: 1" *ngFor="let dayOfweek of daysOfweek">
+    <div
+      class="header-day-of-week"
+      [ngClass]="{ today: isToday(dayOfweek?.date) }"
+    >
+      {{ dayOfweek?.date | date: "EEEE dd" }}
+    </div>
+
+    <div
+      class="hour"
+      [ngClass]="{ 'selected-hour': hour === selectedHour }"
+      *ngFor="let hour of dayOfweek.hours"
+      (click)="selectHour(hour)"
+    >
+      <!-- {{ hour | date: "HH:mm" }} -->
+    </div>
+  </div>
+</div>

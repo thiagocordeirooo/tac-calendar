@@ -1,0 +1,83 @@
+header {
+  display: flex;
+  padding: 16px 0;
+  background-color: #fff;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+
+  .display-period {
+    margin: 0 16px;
+  }
+
+  .container-period {
+    display: flex;
+    align-items: center;
+    width: 700px;
+  }
+
+  .btn-group-period {
+    margin-left: auto;
+  }
+}
+
+.container-left {
+  display: flex;
+  flex-direction: column;
+  border-right: solid 1px lightgray;
+  position: fixed;
+  width: 250px;
+  height: calc(100vh - 86px);
+}
+
+.container-right {
+  width: 100%;
+  margin-left: 266px;
+}
+
+.btn-group button:not(:last-child) {
+  border-right: none;
+}
+
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.btn {
+  background-color: #0000ffa8;
+  border: 1px solid blue;
+  color: white;
+  padding: 10px 24px;
+  cursor: pointer;
+}
+
+.btn-checked {
+  background-color: darkblue;
+}
+
+.btn:hover {
+  background-color: blue;
+}
+
+.btn-prev {
+  margin-right: auto;
+}
+.btn-next {
+  margin-left: auto;
+}
+
+.container-fields {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 480px;
+  margin-bottom: 16px;
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    max-width: 120px;
+  }
+}
